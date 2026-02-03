@@ -5,46 +5,132 @@ import SkillsDetail from "./components/SkillsDetail";
 import NotesList from "./components/NotesList";
 import HomeworkList from "./components/HomeworkList";
 import ContactFooter from "./components/ContactFooter";
+import ScrollDownArrow from "./components/ScrollDownArrow";
+import ReadingProgressBar from "./components/ReadingProgressBar";
+import BackToTop from "./components/BackToTop";
+import MouseGlow from "./components/MouseGlow";
+import ParticleTextLoader from "./components/ParticleTextLoader";
+import TypewriterText from "./components/TypewriterText";
+import ChatBot from "./components/ChatBot";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col">
-      {/* US-01: 个人简介区域 */}
+    <>
+      {/* 全局UI组件（固定定位，不受滚动影响） */}
+      <div className="min-h-screen flex flex-col">
+        {/* 粒子文字加载动画 */}
+        <ParticleTextLoader />
+
+        {/* 阅读进度条 */}
+        <ReadingProgressBar />
+
+        {/* 鼠标跟随光晕 */}
+        <MouseGlow />
       <section
-        className="py-16 px-8 md:py-20 md:px-10 lg:py-24 lg:px-40"
+        className="relative min-h-screen flex items-center justify-center overflow-hidden animate-gradient"
         style={{
-          background: "linear-gradient(135deg, #FFF8F0 0%, #FFEFD5 100%)",
+          background: "linear-gradient(135deg, #0A0A0B 0%, #1A1A2E 50%, #0F0F23 100%)",
+          backgroundSize: "200% 200%",
         }}
       >
-        <div className="max-w-4xl">
-          {/* 姓名 */}
-          <h1
-            className="text-4xl md:text-5xl font-bold mb-4"
-            style={{ color: "#2C3E50" }}
-          >
+        {/* 背景光晕效果 */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div
+            className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-float"
+            style={{ animationDelay: "0s" }}
+          />
+          <div
+            className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl animate-float"
+            style={{ animationDelay: "2s" }}
+          />
+          <div
+            className="absolute top-1/2 left-1/2 w-64 h-64 bg-pink-500/10 rounded-full blur-3xl animate-float"
+            style={{ animationDelay: "4s" }}
+          />
+        </div>
+
+        {/* 内容 */}
+        <div className="relative z-10 text-center px-8 max-w-6xl mx-auto animate-fade-in">
+          {/* 问候语 */}
+          <div className="mb-6 inline-block">
+            <span
+              className="px-6 py-2 rounded-full text-sm font-medium glass"
+              style={{ color: "#A5B4FC" }}
+            >
+              👋 欢迎来到我的数字花园
+            </span>
+          </div>
+
+          {/* 姓名 - 渐变文字 */}
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold mb-6 gradient-text leading-tight">
             尚瑾瑜
           </h1>
 
-          {/* 装饰线 */}
-          <div
-            className="w-24 h-1 mb-6"
-            style={{ backgroundColor: "#E6A042" }}
-          />
-
           {/* 定位 */}
           <h2
-            className="text-xl md:text-2xl mb-8"
-            style={{ color: "#546E7A" }}
+            className="text-2xl md:text-3xl lg:text-4xl font-medium mb-8"
+            style={{ color: "#94A3B8", lineHeight: "1.4" }}
           >
-            一个小白的Vibe Coding心路历程
+            一个小白的<span className="gradient-text font-semibold"> Vibe Coding</span> 心路历程
           </h2>
 
-          {/* 邮箱 */}
-          <div className="flex items-center gap-2 text-base md:text-lg" style={{ color: "#607D8B" }}>
-            <span className="text-xl">✉️</span>
-            <span>shangjinyu_2012@foxmail.com</span>
+          {/* 装饰线 */}
+          <div className="flex justify-center mb-10">
+            <div
+              className="h-1 w-32 animate-neon rounded-full"
+              style={{ background: "linear-gradient(90deg, #6366F1, #8B5CF6, #EC4899)" }}
+            />
+          </div>
+
+          {/* 描述 - 打字机效果 */}
+          <p
+            className="text-lg md:text-xl mb-12 max-w-3xl mx-auto leading-relaxed"
+            style={{ color: "#94A3B8" }}
+          >
+            <TypewriterText text={"从0到1，探索AI时代的产品开发之旅，记录学习、分享成长、用代码构建未来。"} speed={50} delay={4000} />
+          </p>
+
+          {/* 邮箱 + CTA按钮 */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+            {/* 邮箱 */}
+            <div className="flex items-center gap-3 px-6 py-3 glass rounded-xl">
+              <span className="text-2xl">✉️</span>
+              <span className="text-lg" style={{ color: "#E0E7FF" }}>
+                shangjinyu_2012@foxmail.com
+              </span>
+            </div>
+
+            {/* 滚动提示按钮 */}
+            <a
+              href="#projects"
+              className="group relative px-8 py-4 rounded-xl font-semibold text-lg overflow-hidden transition-all hover:scale-105"
+              style={{
+                background: "linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%)",
+                boxShadow: "0 10px 30px rgba(99, 102, 241, 0.3)",
+              }}
+            >
+              <span className="relative z-10 flex items-center gap-2">
+                探索我的作品
+                <svg
+                  className="w-5 h-5 transition-transform group-hover:translate-x-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M13 7l5 5m0 0l-5 5m5-5H6"
+                  />
+                </svg>
+              </span>
+            </a>
           </div>
         </div>
+
+        {/* 滚动提示 - 可点击向下滑动 */}
+        <ScrollDownArrow />
       </section>
 
       {/* US-02: 核心技能标签（概览） */}
@@ -65,8 +151,15 @@ export default function Home() {
       {/* US-07: 作业展示列表 */}
       <HomeworkList />
 
-      {/* US-09: 底部联系方式 */}
-      <ContactFooter />
-    </div>
+        {/* US-09: 底部联系方式 */}
+        <ContactFooter />
+
+        {/* 回到顶部按钮 */}
+        <BackToTop />
+      </div>
+
+      {/* AI聊天助手 - 独立于滚动容器 */}
+      <ChatBot />
+    </>
   );
 }
