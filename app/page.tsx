@@ -54,7 +54,7 @@ export default function Home() {
           {/* 问候语 */}
           <div className="mb-6 inline-block">
             <span
-              className="px-8 py-3 rounded-full text-xl font-medium glass"
+              className="px-8 py-3 rounded-full text-lg font-medium glass"
               style={{ color: "#A5B4FC" }}
             >
               👋 欢迎来到我的数字花园
@@ -62,13 +62,13 @@ export default function Home() {
           </div>
 
           {/* 姓名 - 渐变文字 */}
-          <h1 className="text-8xl md:text-9xl lg:text-[12rem] font-bold mb-6 gradient-text leading-tight">
+          <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 gradient-text leading-tight">
             尚瑾瑜
           </h1>
 
           {/* 定位 */}
           <h2
-            className="text-3xl md:text-5xl lg:text-6xl font-medium mb-8"
+            className="text-2xl md:text-3xl lg:text-4xl font-medium mb-8"
             style={{ color: "#94A3B8", lineHeight: "1.4" }}
           >
             一个小白的<span className="gradient-text font-semibold"> Vibe Coding</span> 心路历程
@@ -84,7 +84,7 @@ export default function Home() {
 
           {/* 描述 - 打字机效果 */}
           <p
-            className="text-xl md:text-2xl lg:text-3xl mb-12 max-w-4xl mx-auto leading-relaxed"
+            className="text-lg md:text-xl lg:text-2xl mb-12 max-w-4xl mx-auto leading-relaxed"
             style={{
               color: "#94A3B8",
               fontFamily: '"Microsoft YaHei", "PingFang SC", sans-serif',
@@ -98,8 +98,8 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             {/* 邮箱 */}
             <div className="flex items-center gap-3 px-6 py-3 glass rounded-xl">
-              <span className="text-2xl">✉️</span>
-              <span className="text-lg" style={{ color: "#E0E7FF" }}>
+              <span className="text-xl">✉️</span>
+              <span className="text-base" style={{ color: "#E0E7FF" }}>
                 shangjinyu_2012@foxmail.com
               </span>
             </div>
@@ -107,7 +107,7 @@ export default function Home() {
             {/* 滚动提示按钮 */}
             <a
               href="#projects"
-              className="group relative px-8 py-4 rounded-xl font-semibold text-lg overflow-hidden transition-all hover:scale-105"
+              className="group relative px-8 py-4 rounded-xl font-semibold text-base overflow-hidden transition-all hover:scale-105"
               style={{
                 background: "linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%)",
                 boxShadow: "0 10px 30px rgba(99, 102, 241, 0.3)",
