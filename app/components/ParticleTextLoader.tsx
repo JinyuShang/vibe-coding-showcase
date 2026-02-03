@@ -17,7 +17,7 @@ export default function ParticleTextLoader() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isVisible, setIsVisible] = useState(true);
   const [showComplete, setShowComplete] = useState(false);
-  const animationRef = useRef<number | undefined>();
+  const animationRef = useRef<number | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
