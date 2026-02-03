@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 interface TypewriterTextProps {
   text: string;
@@ -12,23 +12,28 @@ interface TypewriterTextProps {
 export default function TypewriterText({ text, speed = 100, delay = 0, className = "" }: TypewriterTextProps) {
   const [displayText, setDisplayText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
+  const indexRef = useRef(0);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     let timeoutId: NodeJS.Timeout | null = null;
-    let intervalId: NodeJS.Timeout | null = null;
 
     const startTyping = () => {
-      let index = 0;
+      indexRef.current = 0;
       setDisplayText("");
       setIsTyping(true);
 
-      intervalId = setInterval(() => {
-        if (index < text.length) {
-          setDisplayText((prev) => prev + text.charAt(index));
-          index++;
+      intervalRef.current = setInterval(() => {
+        const currentIndex = indexRef.current;
+        if (currentIndex < text.length) {
+          setDisplayText(text.slice(0, currentIndex + 1));
+          indexRef.current = currentIndex + 1;
         } else {
           setIsTyping(false);
-          if (intervalId) clearInterval(intervalId);
+          if (intervalRef.current) {
+            clearInterval(intervalRef.current);
+            intervalRef.current = null;
+          }
         }
       }, speed);
     };
@@ -37,7 +42,10 @@ export default function TypewriterText({ text, speed = 100, delay = 0, className
 
     return () => {
       if (timeoutId) clearTimeout(timeoutId);
-      if (intervalId) clearInterval(intervalId);
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
     };
   }, [text, speed, delay]);
 

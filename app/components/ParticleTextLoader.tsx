@@ -35,11 +35,11 @@ export default function ParticleTextLoader() {
     window.addEventListener("resize", resizeCanvas);
 
     // 文字配置
-    const fontSize = Math.min(window.innerWidth * 0.08, 120);
+    const fontSize = Math.min(window.innerWidth * 0.12, 180);
     const mainText = "Vibe Coding毕业展";
 
     // WayToAGI火焰文字配置
-    const brandFontSize = Math.min(window.innerWidth * 0.06, 80);
+    const brandFontSize = Math.min(window.innerWidth * 0.18, 270);
     const brandText = "WayToAGI";
 
     // 创建离屏canvas来获取文字像素

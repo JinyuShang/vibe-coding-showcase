@@ -54,7 +54,7 @@ export default function Home() {
           {/* 问候语 */}
           <div className="mb-6 inline-block">
             <span
-              className="px-6 py-2 rounded-full text-sm font-medium glass"
+              className="px-8 py-3 rounded-full text-xl font-medium glass"
               style={{ color: "#A5B4FC" }}
             >
               👋 欢迎来到我的数字花园
@@ -62,13 +62,13 @@ export default function Home() {
           </div>
 
           {/* 姓名 - 渐变文字 */}
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold mb-6 gradient-text leading-tight">
+          <h1 className="text-8xl md:text-9xl lg:text-[12rem] font-bold mb-6 gradient-text leading-tight">
             尚瑾瑜
           </h1>
 
           {/* 定位 */}
           <h2
-            className="text-2xl md:text-3xl lg:text-4xl font-medium mb-8"
+            className="text-3xl md:text-5xl lg:text-6xl font-medium mb-8"
             style={{ color: "#94A3B8", lineHeight: "1.4" }}
           >
             一个小白的<span className="gradient-text font-semibold"> Vibe Coding</span> 心路历程
@@ -84,8 +84,12 @@ export default function Home() {
 
           {/* 描述 - 打字机效果 */}
           <p
-            className="text-lg md:text-xl mb-12 max-w-3xl mx-auto leading-relaxed"
-            style={{ color: "#94A3B8" }}
+            className="text-xl md:text-2xl lg:text-3xl mb-12 max-w-4xl mx-auto leading-relaxed"
+            style={{
+              color: "#94A3B8",
+              fontFamily: '"Microsoft YaHei", "PingFang SC", sans-serif',
+              fontVariantNumeric: 'tabular-nums'
+            }}
           >
             <TypewriterText text={"从0到1，探索AI时代的产品开发之旅，记录学习、分享成长、用代码构建未来。"} speed={50} delay={4000} />
           </p>
