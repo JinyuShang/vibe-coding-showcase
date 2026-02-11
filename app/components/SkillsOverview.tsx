@@ -1,148 +1,150 @@
-// US-02: 核心技能标签（概览）- 科技未来感升级版
+// US-02: 核心技能标签（概览）- 编辑式杂志风格
 const skills = [
   {
     id: 1,
     icon: "🧠",
     title: "两大思维",
-    subtitle: "产品思维 / 工具思维",
-    gradient: "from-purple-500 to-indigo-500",
+    subtitle: "产品思维与工具思维的双轨驱动",
+    color: "caramel",
   },
   {
     id: 2,
     icon: "🧩",
     title: "产品的构成",
-    subtitle: "触达 · 分发 · 形态 · 服务 · 数据",
-    gradient: "from-blue-500 to-cyan-500",
+    subtitle: "触达·分发·形态·服务·数据",
+    color: "terracotta",
   },
   {
     id: 3,
     icon: "🛠️",
     title: "工具清单",
-    subtitle: "Enter · Cursor · Claude · Github",
-    gradient: "from-emerald-500 to-teal-500",
+    subtitle: "Enter · Cursor · Claude · GitHub",
+    color: "forest",
   },
   {
     id: 4,
     icon: "🤖",
     title: "百炼智能体",
-    subtitle: "AI智能体开发 · 百炼平台集成",
-    gradient: "from-violet-500 to-purple-500",
+    subtitle: "AI智能体开发与平台集成",
+    color: "caramel",
   },
   {
     id: 5,
     icon: "⭐",
     title: "技能Skills",
-    subtitle: "技能开发与应用",
-    gradient: "from-amber-500 to-orange-500",
+    subtitle: "技能开发与应用实践",
+    color: "terracotta",
   },
   {
     id: 6,
     icon: "📝",
     title: "编写PRD文档",
-    subtitle: "需求梳理与文档化",
-    gradient: "from-pink-500 to-rose-500",
+    subtitle: "需求梳理与结构化文档",
+    color: "sage",
   },
   {
     id: 7,
     icon: "🚀",
     title: "Web部署",
     subtitle: "Vercel · GitHub · 公网访问",
-    gradient: "from-indigo-500 to-blue-500",
+    color: "forest",
   },
 ];
 
+const colorMap: Record<string, string> = {
+  caramel: 'var(--caramel)',
+  terracotta: 'var(--terracotta)',
+  forest: 'var(--forest)',
+  sage: 'var(--sage)',
+};
+
 export default function SkillsOverview() {
   return (
-    <section id="skills" className="py-24 px-8 md:px-10 lg:px-40 relative">
-      {/* 背景装饰 */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto">
-        {/* 区域标题 */}
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 gradient-text">
-            核心技能
-          </h2>
-          <p className="text-lg md:text-xl" style={{ color: "#94A3B8" }}>
-            这些是我掌握的核心能力
-          </p>
-        </div>
-
-        {/* 技能卡片网格 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {skills.map((skill, index) => (
-            <div
-              key={skill.id}
-              className="group relative glass rounded-2xl p-8 card-hover glow-border overflow-hidden"
-              style={{
-                animationDelay: `${index * 100}ms`,
-              }}
-            >
-              {/* 渐变背景装饰 */}
-              <div
-                className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br ${skill.gradient}`}
-                style={{ opacity: 0.05 }}
-              />
-
-              {/* 图标 */}
-              <div className="relative z-10 text-6xl mb-4 transform group-hover:scale-110 transition-transform duration-300">
-                {skill.icon}
-              </div>
-
-              {/* 标题 */}
-              <h3
-                className="relative z-10 text-2xl font-bold mb-3 group-hover:text-white transition-colors duration-300"
-                style={{ color: "#E0E7FF" }}
-              >
-                {skill.title}
-              </h3>
-
-              {/* 副标题 */}
-              <p
-                className="relative z-10 text-sm group-hover:text-white transition-colors duration-300"
-                style={{ color: "#94A3B8" }}
-              >
-                {skill.subtitle}
-              </p>
-
-              {/* 发光装饰 */}
-              <div
-                className={`absolute -bottom-20 -right-20 w-32 h-32 bg-gradient-to-br ${skill.gradient} rounded-full blur-2xl opacity-0 group-hover:opacity-60 transition-opacity duration-500`}
-              />
-            </div>
-          ))}
-        </div>
-
-        {/* 引导链接 */}
-        <div className="text-center animate-fade-in">
-          <a
-            href="#skills-detail"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-lg transition-all hover:scale-105"
+    <div className="space-y-12">
+      {/* 技能卡片网格 - 不对称布局 */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {skills.map((skill, index) => (
+          <div
+            key={skill.id}
+            className="reveal-on-scroll group"
             style={{
-              background: "linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%)",
-              boxShadow: "0 10px 30px rgba(99, 102, 241, 0.3)",
+              animationDelay: `${index * 100}ms`,
+              background: 'var(--warm-white)',
+              border: '1px solid rgba(107, 93, 82, 0.15)',
+              borderRadius: '0.5rem',
+              padding: '2rem',
+              transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
             }}
           >
-            查看完整技能清单
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
-          </a>
-        </div>
+            {/* 顶部编号装饰 */}
+            <div className="flex justify-between items-start mb-6">
+              <span className="font-display text-5xl font-bold opacity-10 group-hover:opacity-20 transition-opacity"
+                style={{ color: 'var(--deep-brown)' }}
+              >
+                0{skill.id}
+              </span>
+              <div className="w-2 h-2 rounded-full" style={{ backgroundColor: colorMap[skill.color] }} />
+            </div>
+
+            {/* 图标 */}
+            <div className="text-5xl mb-4 transform group-hover:scale-110 transition-transform duration-500">
+              {skill.icon}
+            </div>
+
+            {/* 标题 */}
+            <h3 className="font-serif text-xl font-bold mb-3" style={{ color: 'var(--deep-brown)' }}>
+              {skill.title}
+            </h3>
+
+            {/* 副标题 */}
+            <p className="font-sans text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+              {skill.subtitle}
+            </p>
+
+            {/* 装饰线 */}
+            <div className="mt-6 h-px w-12 transition-all duration-300 group-hover:w-full" style={{ backgroundColor: colorMap[skill.color] }} />
+          </div>
+        ))}
       </div>
-    </section>
+
+      {/* 引导链接 - 编辑风格 */}
+      <div className="text-center pt-8 reveal-on-scroll">
+        <a
+          href="#skills-detail"
+          className="inline-flex items-center gap-3 px-8 py-4 btn-outline group"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.75rem',
+            padding: '1rem 2rem',
+            fontFamily: 'var(--font-sans)',
+            fontWeight: '500',
+            fontSize: '0.875rem',
+            letterSpacing: '0.05em',
+            textTransform: 'uppercase',
+            color: 'var(--deep-brown)',
+            background: 'transparent',
+            border: '2px solid var(--deep-brown)',
+            borderRadius: '0.5rem',
+            cursor: 'pointer',
+            textDecoration: 'none',
+            transition: 'all 0.3s ease',
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = 'var(--deep-brown)';
+            e.currentTarget.style.color = 'var(--warm-white)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = 'transparent';
+            e.currentTarget.style.color = 'var(--deep-brown)';
+          }}
+        >
+          <span>查看完整技能清单</span>
+          <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </a>
+      </div>
+    </div>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-// US-09: 底部联系方式 - 科技未来感升级版
+// US-09: 底部联系方式 - 编辑式杂志风格
 import { useState } from "react";
 
 export default function ContactFooter() {
@@ -19,84 +19,79 @@ export default function ContactFooter() {
   };
 
   return (
-    <footer
-      className="relative py-24 px-8 md:px-10 lg:px-40 overflow-hidden"
-      style={{
-        background: "linear-gradient(135deg, #0A0A0B 0%, #1A1A2E 100%)",
-        borderTop: "1px solid rgba(255, 255, 255, 0.1)",
-      }}
-    >
-      {/* 背景装饰 */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
+    <footer className="relative py-24 px-6 md:px-12 lg:px-20 overflow-hidden" style={{ backgroundColor: 'var(--deep-brown)' }}>
+      {/* 装饰性背景 */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-5">
+        <div className="decorative-circle w-[500px] h-[500px] -top-48 -right-48" />
+        <div className="decorative-circle w-[300px] h-[300px] bottom-0 -left-20" />
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto text-center">
         {/* 标题 */}
-        <h2
-          className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 gradient-text"
-        >
+        <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white">
           联系方式
         </h2>
 
         {/* 装饰线 */}
-        <div
-          className="w-24 h-1 mx-auto mb-8 animate-neon rounded-full"
-          style={{ background: "linear-gradient(90deg, #6366F1, #8B5CF6, #EC4899)" }}
-        />
+        <div className="decorative-line mx-auto mb-8" style={{ backgroundColor: 'var(--caramel)' }} />
 
         {/* 说明 */}
-        <p className="text-xl mb-10" style={{ color: "#94A3B8" }}>
+        <p className="font-sans text-xl mb-10" style={{ color: 'var(--warm-white)', opacity: 0.8 }}>
           期待与您的交流
         </p>
 
-        {/* 邮箱 */}
-        <div className="flex items-center justify-center gap-3 mb-8">
-          <span className="text-3xl">✉️</span>
-          <span className="text-xl" style={{ color: "#E0E7FF" }}>
-            {email}
-          </span>
+        {/* 邮箱卡片 */}
+        <div className="border-ornate p-8 md:p-12 bg-cream/5 backdrop-blur-sm max-w-2xl mx-auto mb-10">
+          <div className="space-y-4">
+            <p className="font-display text-xs uppercase tracking-widest mb-2" style={{ color: 'var(--golden-sand)' }}>
+              Email
+            </p>
+            <a
+              href={`mailto:${email}`}
+              className="font-serif text-2xl md:text-3xl hover:opacity-80 transition-opacity"
+              style={{ color: 'var(--warm-white)' }}
+            >
+              {email}
+            </a>
+          </div>
         </div>
 
         {/* 复制按钮 */}
         <button
           onClick={handleCopyEmail}
           disabled={copyStatus === "copied"}
-          className="px-10 py-4 text-lg font-semibold rounded-2xl transition-all hover:scale-105 disabled:hover:scale-100 disabled:cursor-not-allowed mb-16"
+          className="px-10 py-4 font-semibold rounded transition-all hover:scale-105 disabled:hover:scale-100 disabled:cursor-not-allowed mb-16"
           style={
             copyStatus === "copied"
               ? {
-                  background: "linear-gradient(135deg, #10B981 0%, #059669 100%)",
+                  background: "var(--sage)",
                   color: "white",
-                  boxShadow: "0 10px 30px rgba(16, 185, 129, 0.4)",
                 }
               : copyStatus === "error"
                 ? {
-                    background: "rgba(255, 255, 255, 0.05)",
-                    border: "1px solid rgba(255, 255, 255, 0.1)",
-                    color: "#94A3B8",
+                    background: "transparent",
+                    border: "2px solid var(--soft-brown)",
+                    color: "var(--soft-brown)",
                   }
                 : {
-                    background: "linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%)",
+                    background: "var(--caramel)",
                     color: "white",
-                    boxShadow: "0 10px 30px rgba(99, 102, 241, 0.3)",
                   }
           }
         >
           {copyStatus === "copied"
-            ? "📋 已复制 ✓"
+            ? "已复制 ✓"
             : copyStatus === "error"
               ? "复制失败，请手动复制"
-              : "📋 复制邮箱地址"}
+              : "复制邮箱地址"}
         </button>
 
         {/* 分隔线 */}
-        <div className="w-full h-px mb-8" style={{ background: "linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent)" }} />
+        <div className="w-full h-px mb-8" style={{ background: "linear-gradient(90deg, transparent, var(--muted-clay), transparent)" }} />
 
         {/* 版权信息 */}
         <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-          <p className="text-sm" style={{ color: "#64748B" }}>
+          <p className="font-sans text-sm" style={{ color: 'var(--warm-white)', opacity: 0.6 }}>
             © 2026 尚瑾瑜. Powered by Vibe Coding
           </p>
           <div className="flex gap-4">
@@ -104,16 +99,16 @@ export default function ContactFooter() {
               href="https://github.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm hover:text-white transition-colors"
-              style={{ color: "#94A3B8" }}
+              className="font-sans text-sm hover:opacity-100 transition-opacity"
+              style={{ color: 'var(--warm-white)', opacity: 0.6 }}
             >
               GitHub
             </a>
-            <span style={{ color: "#475569" }}>·</span>
+            <span style={{ color: 'var(--warm-white)', opacity: 0.3 }}>·</span>
             <a
-              href="mailto:shangjinyu_2012@foxmail.com"
-              className="text-sm hover:text-white transition-colors"
-              style={{ color: "#94A3B8" }}
+              href={`mailto:${email}`}
+              className="font-sans text-sm hover:opacity-100 transition-opacity"
+              style={{ color: 'var(--warm-white)', opacity: 0.6 }}
             >
               Email
             </a>
